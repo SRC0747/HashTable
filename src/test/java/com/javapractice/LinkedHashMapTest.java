@@ -71,5 +71,26 @@ public class LinkedHashMap<k,v> {
         MyMapNode<K,V> myMapNode = (MyMapNode<K,V>) myLinkedList.search(key);
         return (myMapNode == null) ? null:myMapNode.getValue();
     }
+    public void add(K key,V value){
+        int index = this.getBucketIndex(key);
+        LinkedList<K> myLinkedList = this.myBucketArray.get(index);
+        if (myLinkedList == null){
+            myLinkedList = new LinkedList<>();
+            this.myBucketArray.set(index,myLinkedList);
+        }
+        MyMapNode<K,V> myMapNode = (MyMapNode<K,V>) myLinkedList.search(key);
+        if (myMapNode == null){
+            myMapNode = new MyMapNode<>(key,value);
+            LinkedList.append(myMapNode);
+        }
+        else{
+            myMapNode.setValue(value);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "MyLinked HashMap List{" + myBucketArray + '}';
+    }
 }
 
