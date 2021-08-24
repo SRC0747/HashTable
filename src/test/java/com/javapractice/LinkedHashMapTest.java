@@ -50,5 +50,7 @@ class LinkedHashMapTest {
         public MyHashMap() {
             this.myLinkedList = new LinkedList<>();
         }
+
+        }
     }
 }
